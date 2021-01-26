@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aksk8sdemo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aks-k8s-app
+  template:
+    metadata:
+      labels:
+        app: aks-k8s-app
+    spec:
+      containers:
+        - name: wa4c-demo
+          image: acrgrshin.azurecr.io/wa4container-tag:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: aks-k8s-app
+spec:
+  ports:
+    - name: http-port
+      port: 80
+      targetPort: 80
+  selector:
+    app: aks-k8s-app
+  type: LoadBalancer
