@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wa4c-demo
-          image: acrTest1024.azurecr.io/wa4container-tag:latest
+          image: acrTest1024.azurecr.io/azure-vote-front:latest
           ports:
             - containerPort: 80
 ---
